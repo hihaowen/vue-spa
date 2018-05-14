@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">首页</div>
+                    <div class="card-header">内容列表</div>
                     <div class="card-body">
                        <div v-for="post in posts" :key="post.id" class="bs-callout bs-callout-danger">
                             <h4><router-link :to="{ name: 'posts', params: { id: post.id } }">{{ post.id }} {{ post.title }}</router-link></h4>

@@ -1,0 +1,19 @@
+<template>
+    <div>
+        <TopMenu></TopMenu>
+        <transition name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
+    </div>
+</template>
+
+<script>
+
+    import TopMenu from './Common/TopMenu'
+
+    export default {
+        components: {
+            TopMenu
+        }
+    }
+</script>
