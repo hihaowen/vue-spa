@@ -19,6 +19,14 @@ Vue.use(VueRouter)
 
 Vue.component('app', App)
 
+import zh_CN from './locale/zh_CN';
+
+import VeeValidate, { Validator } from 'vee-validate';
+
+Validator.localize('zh_CN', zh_CN);
+
+Vue.use(VeeValidate);
+
 new Vue({
     el: '#app',
     router
