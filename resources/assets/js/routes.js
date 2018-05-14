@@ -13,6 +13,11 @@ let routes = [
         path: '/posts/:id',
         name: 'posts',
         component: require('./components/Posts/Post')
+    },
+    {
+        path: '/register',
+        name: 'register',
+        component: require('./components/Register/Register')
     }
 ]
 
