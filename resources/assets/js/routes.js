@@ -18,6 +18,11 @@ let routes = [
         path: '/register',
         name: 'register',
         component: require('./components/Register/Register')
+    },
+    {
+        path: '/confirm',
+        name: 'confirm',
+        component: require('./components/Pages/Confirm')
     }
 ]
 

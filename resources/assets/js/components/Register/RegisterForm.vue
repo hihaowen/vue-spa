@@ -57,6 +57,7 @@
                 }
                 axios.post('/api/register', formData).then(response => {
                     console.log('create ok.');
+                    this.$router.push({name: 'confirm'})
                 })
             }
         }
