@@ -16606,7 +16606,7 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(77);
+module.exports = __webpack_require__(78);
 
 
 /***/ }),
@@ -16617,10 +16617,10 @@ module.exports = __webpack_require__(77);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_App__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_App__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__locale_zh_CN__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vee_validate__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__locale_zh_CN__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vee_validate__ = __webpack_require__(77);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -51057,7 +51057,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(68)
+var __vue_template__ = __webpack_require__(69)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51133,7 +51133,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(66)
 /* template */
-var __vue_template__ = __webpack_require__(67)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51177,7 +51177,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_jwt__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_jwt__ = __webpack_require__(67);
 //
 //
 //
@@ -51224,15 +51224,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         login: function login() {
             var formData = {
-                client_id: 2,
-                client_secret: 'JvoGWIAiJTt1SXM1Th5A0r12QQPJPhqDHW198kxC',
-                grant_type: 'password',
-                username: this.email,
-                password: this.password,
-                scope: ''
+                email: this.email,
+                password: this.password
             };
-            axios.post('/oauth/token', formData).then(function (response) {
-                __WEBPACK_IMPORTED_MODULE_0__helpers_jwt__["a" /* default */].setToken(response.data.access_token);
+            axios.post('/api/login', formData).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0__helpers_jwt__["a" /* default */].setToken(response.data.token);
             });
         }
     }
@@ -51240,6 +51236,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    setToken: function setToken(token) {
+        window.localStorage.setItem('jwt_token', token);
+    },
+    getToken: function getToken() {
+        return window.localStorage.getItem('jwt_token');
+    },
+    removeToken: function removeToken() {
+        window.localStorage.removeItem('jwt_token');
+    }
+});
+
+/***/ }),
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51413,7 +51426,7 @@ if (false) {
 }
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51441,15 +51454,15 @@ if (false) {
 }
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(70)
+var __vue_script__ = __webpack_require__(71)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(74)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51488,12 +51501,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Common_TopMenu__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Common_TopMenu__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Common_TopMenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Common_TopMenu__);
 //
 //
@@ -51515,7 +51528,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -51523,7 +51536,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(72)
+var __vue_template__ = __webpack_require__(73)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51562,7 +51575,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51703,7 +51716,7 @@ if (false) {
 }
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51736,11 +51749,11 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(76);
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -51897,7 +51910,7 @@ if (Object(__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* isDefinedGlobally */])())
 /* harmony default export */ __webpack_exports__["a"] = (locale);
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51924,7 +51937,7 @@ var isDefinedGlobally = function isDefinedGlobally() {
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57031,31 +57044,10 @@ var index_esm = {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    setToken: function setToken(token) {
-        window.localStorage.setItem('jwt_token', token);
-    },
-    getToken: function getToken() {
-        return window.localStorage.getItem('jwt_token');
-    },
-    removeToken: function removeToken() {
-        window.localStorage.removeItem('jwt_token');
-    }
-});
 
 /***/ })
 /******/ ]);
