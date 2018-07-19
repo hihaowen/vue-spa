@@ -31,9 +31,9 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
+     * LoginController constructor.
      *
-     * @return void
+     * @param TokenProxy $proxy
      */
     public function __construct(TokenProxy $proxy)
     {

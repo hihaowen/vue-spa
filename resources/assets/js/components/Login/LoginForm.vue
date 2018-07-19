@@ -46,8 +46,8 @@
                     email: this.email,
                     password: this.password,
                 }
-                axios.post('/api/login', formData).then(response => {
-                    JWTToken.setToken(response.data.token);
+                this.$store.dispatch('loginRequest', formData).then(response => {
+                    this.$router.push({name: 'profile'})
                 })
             }
         }
