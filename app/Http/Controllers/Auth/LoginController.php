@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Proxy\TokenProxy;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -63,5 +64,26 @@ class LoginController extends Controller
             'username' => request('email'),
             'password' => request('password'),
         ]);
+    }
+
+    public function logout()
+    {
+        $user = auth()->guard('api')->user();
+
+        $accessToken = $user->token();
+
+        app('db')->table('oauth_refresh_tokens')
+            ->where('access_token_id', $accessToken->id)
+            ->update([
+                'revoked' => true,
+            ]);
+
+        app('cookie')->forget('refreshToken');
+
+        $accessToken->revoke();
+
+        return response()->json([
+            'message' => 'logout!'
+        ], 204);
     }
 }

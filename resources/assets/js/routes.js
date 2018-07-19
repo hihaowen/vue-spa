@@ -7,11 +7,13 @@ import jwtToken from './helpers/jwt'
 let routes = [
     {
         path: '/',
+        name: 'home',
         component: require('./components/Pages/Home'),
         meta: {}
     },
     {
         path: '/about',
+        name: 'about',
         component: require('./components/Pages/About'),
         meta: {}
     },

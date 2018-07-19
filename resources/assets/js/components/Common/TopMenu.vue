@@ -21,8 +21,8 @@
                 <li class="nav-item" v-if="user.authenticated">
                     <router-link class="nav-link" to="/profile">个人中心</router-link>
                 </li>
-                <li class="nav-item" v-if="user.authenticated">
-                    <router-link class="nav-link" to="#">退出</router-link>
+                <li v-if="user.authenticated">
+                    <a @click.prevent="logout" href="#">退出</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
@@ -36,10 +36,18 @@
 <script>
     import {mapState} from 'vuex'
     export default {
+        name: 'top-menu',
         computed: {
             ...mapState({
                 user: state => state.AuthUser
             })
+        },
+        methods: {
+            logout() {
+                this.$store.dispatch('logoutRequest').then(response => {
+                    this.$router.push({name: 'home'})
+                })
+            }
         }
     }
 </script>
