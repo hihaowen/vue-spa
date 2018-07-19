@@ -70,6 +70,15 @@ class LoginController extends Controller
     {
         $user = auth()->guard('api')->user();
 
+        if(is_null($user)) {
+            app('cookie')->queue(
+                app('cookie')->forget('refreshToken')
+            );
+            return response()->json([
+                'message' => 'logout!'
+            ], 204);
+        }
+
         $accessToken = $user->token();
 
         app('db')->table('oauth_refresh_tokens')
@@ -78,7 +87,9 @@ class LoginController extends Controller
                 'revoked' => true,
             ]);
 
-        app('cookie')->forget('refreshToken');
+        app('cookie')->queue(
+            app('cookie')->forget('refreshToken')
+        );
 
         $accessToken->revoke();
 
