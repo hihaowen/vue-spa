@@ -86,4 +86,13 @@ class LoginController extends Controller
             'message' => 'logout!'
         ], 204);
     }
+
+    public function refresh()
+    {
+        $refreshToken = request()->cookie('refreshToken');
+
+        $this->proxy->proxy('refresh_token',[
+            'refresh_token' => $refreshToken,
+        ]);
+    }
 }
