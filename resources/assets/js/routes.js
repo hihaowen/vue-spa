@@ -43,8 +43,15 @@ let routes = [
     },
     {
         path: '/profile',
-        name: 'profile',
-        component: require('./components/User/Profile'),
+        component: require('./components/User/ProfileWrapper'),
+        children: [
+            {
+                path: '',
+                name: 'profile',
+                component: require('./components/User/Profile'),
+                meta: {}
+            },
+        ],
         meta: { requiresAuth: true }
     }
 ]

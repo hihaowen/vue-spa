@@ -35,6 +35,7 @@
 
 <script>
     import {mapState} from 'vuex'
+
     export default {
         name: 'top-menu',
         computed: {
